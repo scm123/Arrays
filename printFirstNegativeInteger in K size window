@@ -1,0 +1,24 @@
+  
+    public long[] printFirstNegativeInteger(long A[], int N, int K)
+    {
+        LinkedList<Integer> list=new LinkedList<>();
+        long res[]=new long[N-K+1];
+        int idx=0;
+        int i=0;
+        int j=0;
+        
+        while(i<=N-K){
+            if(A[j]<0) list.add(j);
+            if(j-i+1==K){ //window ending here
+                i++;
+                if(list.size()==0) res[idx++]=0;
+                else{
+                    int index=list.getFirst();
+                    res[idx++]=A[index];
+                    if(i>index) list.removeFirst();
+                }
+            }
+            j++;
+        }
+        return res;
+    }
