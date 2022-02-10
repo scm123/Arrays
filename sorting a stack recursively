@@ -1,1 +1,32 @@
+logic
+stack=[4,3,6,2,1] top=1
 
+make 2 part of stack one is sorted other unsorted ,
+ element=s.pop()=1
+stack=[4,3,6,2] 
+push 1 in sorted position
+
+
+
+	public Stack<Integer> sort(Stack<Integer> s)
+	{
+		//add code here.
+		if(s.isEmpty()) return s;
+		int top=s.pop();
+		Stack<Integer> s1= sort(s);
+		
+	    return	insertInSortedOrder(s,top);
+	}
+	
+	public Stack<Integer> insertInSortedOrder(Stack<Integer> s,int element)
+	{
+		//add code here.
+		
+			if(s.isEmpty() || s.peek()<element) {s.push(element) ;return s;}
+			
+			int top=s.pop();
+			insertInSortedOrder(s,element);
+			s.push(top);
+			
+			return s;
+	}
